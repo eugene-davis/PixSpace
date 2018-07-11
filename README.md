@@ -54,3 +54,9 @@ To execute PixSpace Client run
 - Mouse Wheel Scroll Up - Zoom In
 - Mouse Wheel Scroll Down - Zoom Out
 - Mouse Drag - Move View
+
+## Using Docker
+
+Pixspace now works in Docker (in Linux and Mac)! Start by building the image with `build-docker.sh`, then launch the containers with `launch-docker.sh`.
+
+Once the client is up, you will need to give it the IP address of the server container, `172.20.240.2`, then everything should work like normal.
