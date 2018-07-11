@@ -34,5 +34,5 @@ sleep 10
 docker exec -i mysql-server mysql -uroot -proot < db_scripts/mysql_db_create.sql
 
 # Create pixspace containers
-docker run -d --rm -e DISPLAY=$XVAR:0 --name pixspace-server -v $(PWD)/config.dat:/config.dat --network=pixspace-network --ip="172.20.240.2" pixspace:1.0 "/pixspace/build/Server/pixspaceserver"
-docker run -d --rm -e DISPLAY=$XVAR:0 --name pixspace-client --network=pixspace-network pixspace:1.0 "/pixspace/build/Client/pixspaceclient"
+docker run -d --rm -e DISPLAY=$XVAR:0 --name pixspace-server -v $(PWD)/config.dat:/config.dat --network=pixspace-network --ip="172.20.240.2" pixspace-server:1.0
+docker run -d --rm -e DISPLAY=$XVAR:0 --name pixspace-client --network=pixspace-network pixspace-client:1.0
