@@ -6,7 +6,7 @@ then
     echo "Running on Mac"
     open -a XQuartz
     XVAR=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
-    xhost +local:docker
+    xhost +
 elif [ "$(uname -s)" == "Linux" ]
 then
     echo "Running on Linux"
