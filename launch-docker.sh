@@ -5,7 +5,7 @@ if [ "$(uname -s)" == "Darwin" ]
 then
     echo "Running on Mac"
     open -a XQuartz
-    XVAR=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+    XVAR=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'):0
     xhost +
 elif [ "$(uname -s)" == "Linux" ]
 then
@@ -35,5 +35,5 @@ sleep 10
 docker exec -i mysql-server mysql -uroot -proot < db_scripts/mysql_db_create.sql
 
 # Create pixspace containers
-docker run -d --rm -e DISPLAY=$XVAR:0 --name pixspace-server -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd)/config.dat:/config.dat --network=pixspace-network --ip="172.20.240.2" pixspace-server:1.0
-docker run -d --rm -e DISPLAY=$XVAR:0 --name pixspace-client -v /tmp/.X11-unix:/tmp/.X11-unix --network=pixspace-network pixspace-client:1.0
+docker run -d --rm -e DISPLAY=$XVAR --name pixspace-server -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd)/config.dat:/config.dat --network=pixspace-network --ip="172.20.240.2" pixspace-server:1.0
+docker run -d --rm -e DISPLAY=$XVAR --name pixspace-client -v /tmp/.X11-unix:/tmp/.X11-unix --network=pixspace-network pixspace-client:1.0
